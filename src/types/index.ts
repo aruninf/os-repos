@@ -32,7 +32,8 @@ export type CategoryType =
   | 'bounties'
   | 'playbooks'
   | 'resources'
-  | 'career';
+  | 'career'
+  | 'security';
 
 export interface Repo {
   id: string;

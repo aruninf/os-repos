@@ -86,7 +86,7 @@ export default function App() {
       if (activeFilterTag === 'ai' && !['ai', 'trading', 'career'].includes(repo.cat)) return false;
       if (activeFilterTag === 'playbooks' && !['playbooks', 'resources'].includes(repo.cat)) return false;
       if (activeFilterTag === 'business' && !['crm', 'erp', 'billing', 'hr', 'pm', 'clients', 'ecommerce'].includes(repo.cat)) return false;
-      if (activeFilterTag === 'testing' && !['testing', 'mobile'].includes(repo.cat)) return false;
+      if (activeFilterTag === 'testing' && !['testing', 'mobile', 'security'].includes(repo.cat)) return false;
       if (activeFilterTag === 'hosting' && !['hosting', 'devops', 'backend', 'data', 'auth', 'dev', 'internal'].includes(repo.cat)) return false;
       if (activeFilterTag === 'popular' && repo.starCount < 30000) return false;
 

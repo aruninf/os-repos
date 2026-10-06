@@ -11,7 +11,7 @@
 
 ## Highlights & Features
 
-- **90+ Curated Repositories**: Covering AI, Automation, CRM, ERP, Observability, Marketing, Mobile Testing, and Client Billing.
+- **180 Curated Repositories**: Covering AI, Mobile AI, Automation, CRM, ERP, Observability, Marketing, Mobile Testing, and Client Billing.
 - **Commercial Tool Replacements**: Direct alternatives to expensive services such as Zapier, Salesforce, Datadog, Calendly, Retool, DocuSign, Slack, and Jira.
 - **Spotlight on India**: Prominent badges and filters for projects built by Indian teams, including ERPNext, Chatwoot, Appsmith, ToolJet, SigNoz, Bruno, and Listmonk.
 - **Interactive Cost Savings Calculator**: Estimate team and client subscription savings by selecting the commercial tools you currently pay for.

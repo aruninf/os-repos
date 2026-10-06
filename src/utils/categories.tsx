@@ -148,6 +148,12 @@ export const CATEGORY_DETAILS: Record<CategoryType | string, CategoryInfo> = {
     badgeClass: 'text-yellow-400 bg-yellow-500/10 border-yellow-500/20',
     icon: <ShieldCheck size={14} />
   },
+  security: {
+    label: 'API Security',
+    color: 'text-red-300',
+    badgeClass: 'text-red-300 bg-red-500/10 border-red-500/20',
+    icon: <ShieldCheck size={14} />
+  },
   pm: {
     label: 'Project Management',
     color: 'text-blue-400',
