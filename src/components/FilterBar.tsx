@@ -125,7 +125,7 @@ export const FilterBar: React.FC<FilterBarProps> = ({
           </div>
 
           {/* View Mode Toggle (Grid vs Table) */}
-          <div className="hidden lg:flex items-center bg-[#0d0f17] rounded-xl border border-white/5 p-1 gap-1">
+          <div className="flex items-center justify-end sm:justify-start bg-[#0d0f17] rounded-xl border border-white/5 p-1 gap-1 flex-shrink-0 self-end md:self-auto">
             <button
               onClick={() => onViewModeChange('grid')}
               className={`p-2 rounded-lg transition-colors ${
