@@ -2,7 +2,7 @@ import React, { useState, useMemo, useEffect } from 'react';
 import { 
   Search, Github, Star, ArrowUpRight, Zap, Code2, 
   Terminal, Database, Globe, Briefcase, Activity, LayoutTemplate, 
-  X, ChevronDown, Command, Smartphone, ShieldCheck, Mail, Calendar, MessageSquare
+  X, ChevronDown, Command, Smartphone, ShieldCheck, Mail, Calendar, MessageSquare, MapPin
 } from 'lucide-react';
 
 interface Repo {
@@ -12,6 +12,7 @@ interface Repo {
   cat: string;
   pays: string;
   note: string;
+  use?: string;
 }
 
 const REPOS: Repo[] = [
@@ -85,7 +86,36 @@ const REPOS: Repo[] = [
   {name:"Leantime",repo:"Leantime/leantime",stars:"5k+",cat:"pm",pays:"Asana",note:"For freelancers"},
   {name:"Umami",repo:"umami-software/umami",stars:"20k+",cat:"marketing",pays:"GA",note:"Privacy analytics"},
   {name:"Uptime Kuma",repo:"louislam/uptime-kuma",stars:"70k+",cat:"devops",pays:"Pingdom",note:"Status pages"},
-  {name:"UPI-Utils",repo:"varun-productmanager/UPI-Utilis",stars:"10+",cat:"payments",pays:"-",note:"upi:// links+QR India"}
+  {name:"UPI-Utils",repo:"varun-productmanager/UPI-Utilis",stars:"10+",cat:"payments",pays:"-",note:"upi:// links+QR India"},
+  {name:"ComfyUI",repo:"comfyanonymous/ComfyUI",stars:"142k",cat:"media",pays:"Midjourney $10/mo",note:"Node-based SD engine; custom workflow gigs ₹5-15k",use:"Batch-generate ad creatives, product shots, social visuals for clients; sell workflow templates/nodes on Gumroad or Patreon"},
+  {name:"Upscayl",repo:"upscayl/upscayl",stars:"50k+",cat:"media",pays:"Magnific $40/mo",note:"Local AI upscaler, no per-image cost",use:"Upscale old photos, low-res client logos, e-commerce product images and print-ready enlargements; free batches before delivery"},
+  {name:"IOPaint",repo:"Sanster/IOPaint",stars:"23k+",cat:"media",pays:"Photoshop $23/mo",note:"Object removal/inpaint; retouch ₹50-300/photo",use:"Erase objects, watermarks and defects from product photos, clean stock images, retouch portraits for landing pages"},
+  {name:"Invoke",repo:"invoke-ai/InvokeAI",stars:"28k+",cat:"media",pays:"Midjourney $30/mo",note:"Pro SD WebUI; base of commercial AI products",use:"Studio-grade brand image generation: moodboards, concept art, ad variants; host on a GPU box as a team's private image studio"},
+  {name:"Krita AI Diffusion",repo:"Acly/krita-ai-diffusion",stars:"10k+",cat:"media",pays:"Photoshop Firefly",note:"AI inpaint/outpaint inside Krita",use:"Generate and inpaint illustrations mid-sketch for concept art, icon/illustration sets and UI/UX mockups and decks"},
+  {name:"SUPIR",repo:"Fanghua-Yu/SUPIR",stars:"5k+",cat:"media",pays:"Topaz Photo AI $99",note:"Photo-restoration; old-photo repair service",use:"Repair damaged/old family photos as a gig (₹100-500/photo); pre-upscale assets going to print"},
+  {name:"Clarity Upscaler",repo:"philz1337x/clarity-upscaler",stars:"5k+",cat:"media",pays:"Magnific $40/mo",note:"FOSS Magnific alternative; AGPL",use:"Host the Magnific-style web UI as a paid SaaS for portrait/product photo upscaling"},
+  {name:"ComfyUI SUPIR",repo:"kijai/ComfyUI-SUPIR",stars:"2.3k",cat:"media",pays:"Topaz Gigapixel",note:"SUPIR nodes for ComfyUI pipelines",use:"Drop SUPIR quality into an existing ComfyUI automation or client photo pipeline"},
+  {name:"Ultimate SD Upscale",repo:"ssitu/ComfyUI_UltimateSDUpscale",stars:"1.5k",cat:"media",pays:"Topaz Gigapixel $99",note:"Tiled upscale nodes; pairs with ComfyUI",use:"Tile-upscale hero images to 4K/print for wallpapers, posters and large-format social assets"},
+  {name:"HunyuanVideo",repo:"Tencent/HunyuanVideo",stars:"12k+",cat:"media",pays:"Runway credits",note:"Open video-gen model; ad reels locally",use:"Generate ad b-roll and product clips locally instead of buying stock footage; short-form video gigs"},
+  {name:"CogVideoX",repo:"THUDM/CogVideo",stars:"13k+",cat:"media",pays:"Sora/Veo",note:"Text/image-to-video; repo now THUDM/CogVideo",use:"Batch short Reels/YouTube-intro clips from text for social-media retainer clients"},
+  {name:"AnimateDiff",repo:"guoyww/AnimateDiff",stars:"12k+",cat:"media",pays:"After Effects",note:"Motion for SD; loops for social",use:"Animated loops and motion posters for landing pages, social posts and NFT-style art drops"},
+  {name:"LivePortrait",repo:"KwaiVGI/LivePortrait",stars:"19k+",cat:"media",pays:"D-ID $29/mo",note:"Animate portraits live; avatar gigs",use:"Animate a client's headshot for marketing/video outreach; personalized video messages at scale"},
+  {name:"SadTalker",repo:"OpenTalker/SadTalker",stars:"14k+",cat:"media",pays:"HeyGen $29/mo",note:"Photo→talking head; pair with TTS",use:"Turn any photo + voiceover into a talking-head video for course intros, WhatsApp/social ads in local languages"},
+  {name:"Hallo",repo:"fudan-generative-vision/hallo",stars:"8k+",cat:"media",pays:"HeyGen",note:"Audio-driven portrait animation",use:"Lip-synced avatar videos for micro-course creators and dubbing existing content into other languages"},
+  {name:"Linly-Talker",repo:"Kedreamix/Linly-Talker",stars:"3.4k",cat:"media",pays:"Synthesia $29/mo",note:"LLM+Whisper+SadTalker avatar chatbot stack",use:"Interactive LLM avatar for landing pages, kiosks and expo demos; voice-reactive digital-human chatbot"},
+  {name:"Open-LLM-VTuber",repo:"Open-LLM-VTuber/Open-LLM-VTuber",stars:"14k+",cat:"media",pays:"Voice agent SaaS",note:"Local Live2D voice AI; VTuber channels",use:"Local hands-free voice AI with Live2D avatar: VTuber streams, YouTube content, personalised desk assistants"},
+  {name:"GIMP",repo:"GNOME/gimp",stars:"6.5k",cat:"design",pays:"Photoshop $23/mo",note:"Raster editor; GitHub mirror of GNOME GitLab",use:"Edit product shots, design banners and social creatives without Adobe rental — every freelance design gig"},
+  {name:"Inkscape",repo:"inkscape/inkscape",stars:"4k+",cat:"design",pays:"Illustrator $23/mo",note:"Vector editor; logo gigs; GitLab mirror",use:"Vector logos, icons, print assets; SVG→PNG exports and dev handoff files for UI/UX work"},
+  {name:"Kdenlive",repo:"KDE/kdenlive",stars:"5.9k",cat:"video",pays:"Premiere $23/mo",note:"Video editor; no license cost",use:"Full client video editing: YouTube production, event/wedding reels, brand films — zero license cost"},
+  {name:"LosslessCut",repo:"mifi/lossless-cut",stars:"45k+",cat:"video",pays:"Descript $24/mo",note:"Instant trims, no re-encode; highlight clips",use:"Quick-trim client rushes, cut highlight reels, extract audio — no re-render wait between revisions"},
+  {name:"auto-editor",repo:"WyattBlue/auto-editor",stars:"5.5k",cat:"video",pays:"-",note:"CLI silence-cut; repurpose podcasts fast",use:"Silence-cut podcasts/interviews automatically; sell repurposed short-form versions of long recordings"},
+  {name:"Remotion",repo:"remotion-dev/remotion",stars:"66k",cat:"video",pays:"After Effects",note:"Video from React; data-driven video SaaS",use:"Sell data-driven video pipelines: 1,000 personalised video ads from a CSV for real estate/recruiting agencies"},
+  {name:"Manim",repo:"ManimCommunity/manim",stars:"41k+",cat:"content",pays:"-",note:"Math animations; explainer channels",use:"Math/CS/physics explainer animations: 3Blue1Brown-style YouTube channels, EdTech course assets"},
+  {name:"FoloUp",repo:"FoloUp/FoloUp",stars:"1.2k",cat:"hr",pays:"HireVue",note:"MIT AI voice interviewer; Next.js",use:"Automated voice screening for a hiring agency or your own recruiting; white-label to HR firms"},
+  {name:"OpenCATS",repo:"opencats/OpenCATS",stars:"760",cat:"hr",pays:"Recruiterflow $99/mo",note:"ATS for staffing agencies",use:"Stand up and host an ATS for staffing agencies and consultancies; migration gigs from paid tools"},
+  {name:"SpotAxis",repo:"Assystant/SpotAxis",stars:"30",cat:"hr",pays:"Zoho Recruit",note:"MIT ATS; early stage (30★)",use:"Pitch a free ATS to early-stage startups and small recruitment firms"},
+  {name:"Resume-Matcher",repo:"srbhr/Resume-Matcher",stars:"28k+",cat:"hr",pays:"Rezi/Teal",note:"Resume vs JD match, local; resume gigs",use:"Match resumes to a job description locally: career-coaching, LinkedIn/resume-optimization services"},
+  {name:"recruit-ai-platform",repo:"JingjieXiong/recruit-ai-platform",stars:"4",cat:"hr",pays:"-",note:"AI recruiting stack; brand-new (4★)",use:"Prototype AI resume screening + interview orchestration for a boutique recruiting agency"}
 ];
 
 const getCategoryDetails = (cat: string) => {
@@ -119,7 +149,8 @@ const getCategoryDetails = (cat: string) => {
     clients: { color: 'text-indigo-400 bg-indigo-400/10 border-indigo-400/20', icon: <Briefcase size={14} /> },
     sell: { color: 'text-yellow-400 bg-yellow-400/10 border-yellow-400/20', icon: <Globe size={14} /> },
     time: { color: 'text-blue-400 bg-blue-400/10 border-blue-400/20', icon: <Calendar size={14} /> },
-    payments: { color: 'text-emerald-400 bg-emerald-400/10 border-emerald-400/20', icon: <Zap size={14} /> }
+    payments: { color: 'text-emerald-400 bg-emerald-400/10 border-emerald-400/20', icon: <Zap size={14} /> },
+    media: { color: 'text-rose-400 bg-rose-400/10 border-rose-400/20', icon: <Activity size={14} /> }
   };
   return details[cat] || { color: 'text-gray-400 bg-gray-400/10 border-gray-400/20', icon: <Code2 size={14} /> };
 };
@@ -362,6 +393,18 @@ export default function App() {
                               <span className="text-sm text-slate-300 leading-relaxed block">{repo.note}</span>
                             </div>
                           </div>
+
+                          {repo.use && (
+                            <div className="bg-[#1A1A1A] rounded-xl p-3 border border-white/5 flex items-start gap-3">
+                              <div className="mt-0.5 bg-sky-500/10 p-1 rounded-md text-sky-400">
+                                <MapPin size={14} />
+                              </div>
+                              <div>
+                                <span className="block text-xs font-semibold text-slate-500 uppercase tracking-wider mb-0.5">Where to Use</span>
+                                <span className="text-sm text-slate-300 leading-relaxed block">{repo.use}</span>
+                              </div>
+                            </div>
+                          )}
                         </div>
                       </div>
                     </div>
