@@ -33,7 +33,8 @@ export type CategoryType =
   | 'playbooks'
   | 'resources'
   | 'career'
-  | 'security';
+  | 'security'
+  | 'media';
 
 export interface Repo {
   id: string;
@@ -44,11 +45,12 @@ export interface Repo {
   cat: CategoryType;
   pays: string;
   note: string;
-  isMadeInIndia?: boolean;
+  use?: string;
   tags?: string[];
   website?: string;
   monthlySavingsUsd?: number;
   dockerCommand?: string;
+  image?: string;
 }
 
 export type SortOption = 'stars-desc' | 'stars-asc' | 'name-asc' | 'name-desc' | 'savings-desc';

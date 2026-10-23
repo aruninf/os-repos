@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { 
   X, Github, Globe, Star, Terminal, Zap, 
-  Check, Copy, Bookmark, ExternalLink, Briefcase
+  Check, Copy, Bookmark, ExternalLink, Briefcase, MapPin
 } from 'lucide-react';
 import { Repo } from '../types';
 import { getCategoryDetails } from '../utils/categories';
@@ -82,25 +82,30 @@ export const RepoDetailModal: React.FC<RepoDetailModalProps> = ({
                 <span>{catDetails.label}</span>
               </span>
 
-              {repo.isMadeInIndia && (
-                <span className="inline-flex items-center gap-1 text-xs font-medium px-2 py-0.5 rounded-md bg-orange-500/10 text-orange-300 border border-orange-500/20">
-                  <Globe size={12} />
-                  <span>Made in India</span>
-                </span>
-              )}
-
               <div className="flex items-center gap-1 text-xs font-mono font-bold bg-amber-500/10 text-amber-300 px-2.5 py-0.5 rounded-md border border-amber-500/20">
                 <Star size={12} className="fill-amber-400" />
                 <span>{repo.stars} stars</span>
               </div>
             </div>
 
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-white">
-              {repo.name}
-            </h2>
-            <p className="text-xs sm:text-sm text-slate-400 font-mono mt-1">
-              github.com/{repo.repo}
-            </p>
+            <div className="flex items-center gap-3.5">
+              <img
+                src={`https://github.com/${repo.repo.split('/')[0]}.png?size=96`}
+                alt={repo.name}
+                onError={(e) => {
+                  e.currentTarget.style.display = 'none';
+                }}
+                className="w-12 h-12 rounded-xl border border-white/10 bg-[#07080c] object-cover flex-shrink-0 shadow-md"
+              />
+              <div>
+                <h2 className="text-2xl sm:text-3xl font-extrabold text-white">
+                  {repo.name}
+                </h2>
+                <p className="text-xs sm:text-sm text-slate-400 font-mono mt-0.5">
+                  github.com/{repo.repo}
+                </p>
+              </div>
+            </div>
           </div>
 
           <div className="flex items-center gap-2">
@@ -132,6 +137,19 @@ export const RepoDetailModal: React.FC<RepoDetailModalProps> = ({
         {/* Content Body */}
         <div className="py-6 space-y-6">
           
+          {/* Banner Preview Image */}
+          <div className="relative w-full aspect-[16/9] sm:h-56 rounded-2xl overflow-hidden border border-white/10 bg-[#07080c] shadow-lg">
+            <img
+              src={repo.image || `https://opengraph.githubassets.com/1/${repo.repo}`}
+              alt={`${repo.name} preview banner`}
+              loading="lazy"
+              onError={(e) => {
+                e.currentTarget.parentElement?.classList.add('hidden');
+              }}
+              className="w-full h-full object-cover object-top"
+            />
+          </div>
+
           {/* Software Replacement Card */}
           <div className="glass-panel p-4 sm:p-5 rounded-2xl border-white/10 space-y-2">
             <div className="flex items-center justify-between text-xs font-semibold text-slate-400 uppercase tracking-wider">
@@ -161,6 +179,18 @@ export const RepoDetailModal: React.FC<RepoDetailModalProps> = ({
               {repo.note}
             </p>
           </div>
+
+          {/* Where to Use */}
+          {repo.use && (
+            <div className="bg-[#111420] p-4 sm:p-5 rounded-2xl border border-sky-500/20 space-y-2">
+              <div className="flex items-center gap-1.5 text-xs font-semibold text-sky-400 uppercase tracking-wider">
+                <MapPin size={14} /> Where to Use & Monetization Gigs
+              </div>
+              <p className="text-sm sm:text-base font-medium text-slate-200 leading-relaxed">
+                {repo.use}
+              </p>
+            </div>
+          )}
 
           {/* Quick Deployment Snippets */}
           <div className="space-y-3">

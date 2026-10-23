@@ -73,15 +73,19 @@ export const RepoTableView: React.FC<RepoTableViewProps> = ({
                         <Bookmark size={15} className={isFav ? 'fill-amber-400' : ''} />
                       </button>
 
+                      <img
+                        src={`https://github.com/${repo.repo.split('/')[0]}.png?size=64`}
+                        alt={repo.name}
+                        onError={(e) => {
+                          e.currentTarget.style.display = 'none';
+                        }}
+                        className="w-8 h-8 rounded-lg border border-white/10 bg-[#0d0f17] object-cover flex-shrink-0"
+                        loading="lazy"
+                      />
+
                       <div>
                         <div className="font-semibold text-white group-hover:text-emerald-400 transition-colors flex items-center gap-1.5">
                           <span>{repo.name}</span>
-                          {repo.isMadeInIndia && (
-                            <span className="inline-flex items-center gap-0.5 text-[10px] px-1.5 py-0.5 rounded bg-orange-500/10 text-orange-300 border border-orange-500/20">
-                              <Globe size={10} />
-                              <span>India</span>
-                            </span>
-                          )}
                         </div>
                         <a
                           href={`https://github.com/${repo.repo}`}

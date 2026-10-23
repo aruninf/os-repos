@@ -1,5 +1,5 @@
 import React from 'react';
-import { Zap, Star, Globe, DollarSign, Layers } from 'lucide-react';
+import { Zap, Star, DollarSign, Layers } from 'lucide-react';
 import { Repo } from '../types';
 
 interface HeroProps {
@@ -11,7 +11,6 @@ interface HeroProps {
 export const Hero: React.FC<HeroProps> = ({ repos }) => {
   const totalStarsCount = repos.reduce((acc, r) => acc + r.starCount, 0);
   const formattedStars = (totalStarsCount / 1000).toFixed(0) + 'k+';
-  const madeInIndiaCount = repos.filter(r => r.isMadeInIndia).length;
   const estimatedSavings = repos.reduce((acc, r) => acc + (r.monthlySavingsUsd || 0), 0);
 
   return (
@@ -39,7 +38,7 @@ export const Hero: React.FC<HeroProps> = ({ repos }) => {
       </p>
 
       {/* Stat Cards Ribbon */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 max-w-4xl mx-auto mb-10">
+      <div className="grid grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4 max-w-3xl mx-auto mb-10">
         <div className="glass-panel p-4 rounded-2xl flex flex-col items-center justify-center text-center">
           <div className="flex items-center gap-1.5 text-emerald-400 font-bold text-2xl sm:text-3xl font-mono mb-1">
             <Layers size={22} />
@@ -62,14 +61,6 @@ export const Hero: React.FC<HeroProps> = ({ repos }) => {
             <span>${estimatedSavings.toLocaleString()}</span>
           </div>
           <span className="text-xs uppercase font-semibold text-slate-400 tracking-wider">Monthly Replaced</span>
-        </div>
-
-        <div className="glass-panel p-4 rounded-2xl flex flex-col items-center justify-center text-center">
-          <div className="flex items-center gap-1.5 text-orange-400 font-bold text-2xl sm:text-3xl font-mono mb-1">
-            <Globe size={22} />
-            <span>{madeInIndiaCount} Projects</span>
-          </div>
-          <span className="text-xs uppercase font-semibold text-slate-400 tracking-wider">Made in India</span>
         </div>
       </div>
     </section>

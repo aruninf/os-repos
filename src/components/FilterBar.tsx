@@ -1,7 +1,7 @@
 import React from 'react';
 import { 
   Search, X, ChevronDown, LayoutGrid, List, 
-  ArrowUpDown, Layers, Award, Globe, Zap, Cpu, 
+  ArrowUpDown, Layers, Award, Zap, Cpu, 
   BookOpen, Building2, Smartphone, Cloud, Star
 } from 'lucide-react';
 import { SortOption, ViewMode } from '../types';
@@ -42,7 +42,6 @@ export const FilterBar: React.FC<FilterBarProps> = ({
   const quickTags = [
     { id: 'all', label: 'All Projects', icon: <Layers size={13} /> },
     { id: 'bounties', label: 'Bounties & Jobs', icon: <Award size={13} /> },
-    { id: 'india', label: 'Made in India', icon: <Globe size={13} /> },
     { id: 'agency', label: 'Automation & Agency', icon: <Zap size={13} /> },
     { id: 'ai', label: 'AI & Data', icon: <Cpu size={13} /> },
     { id: 'playbooks', label: 'Playbooks & Stacks', icon: <BookOpen size={13} /> },
@@ -68,7 +67,7 @@ export const FilterBar: React.FC<FilterBarProps> = ({
               type="text" 
               value={searchQuery}
               onChange={(e) => onSearchChange(e.target.value)}
-              placeholder="Search projects, categories, or software replaced (e.g. Zapier, Airtable, India)..." 
+              placeholder="Search projects, categories, or software replaced (e.g. Zapier, Airtable, Datadog)..." 
               className="w-full pl-11 pr-24 py-3.5 bg-transparent border-none outline-none text-white text-sm sm:text-base placeholder-slate-500 font-normal"
             />
             

@@ -81,9 +81,8 @@ export default function App() {
 
       // Quick filter tag pill
       if (activeFilterTag === 'bounties' && !['bounties', 'career'].includes(repo.cat)) return false;
-      if (activeFilterTag === 'india' && !repo.isMadeInIndia) return false;
       if (activeFilterTag === 'agency' && !['automation', 'booking', 'marketing', 'support'].includes(repo.cat)) return false;
-      if (activeFilterTag === 'ai' && !['ai', 'trading', 'career'].includes(repo.cat)) return false;
+      if (activeFilterTag === 'ai' && !['ai', 'trading', 'career', 'media'].includes(repo.cat)) return false;
       if (activeFilterTag === 'playbooks' && !['playbooks', 'resources'].includes(repo.cat)) return false;
       if (activeFilterTag === 'business' && !['crm', 'erp', 'billing', 'hr', 'pm', 'clients', 'ecommerce'].includes(repo.cat)) return false;
       if (activeFilterTag === 'testing' && !['testing', 'mobile', 'security'].includes(repo.cat)) return false;
@@ -96,11 +95,11 @@ export default function App() {
         const matchRepo = repo.repo.toLowerCase().includes(query);
         const matchPays = repo.pays.toLowerCase().includes(query);
         const matchNote = repo.note.toLowerCase().includes(query);
+        const matchUse = repo.use?.toLowerCase().includes(query) || false;
         const matchCat = repo.cat.toLowerCase().includes(query);
         const matchTags = repo.tags?.some(tag => tag.toLowerCase().includes(query)) || false;
-        const matchIndia = (query === 'india' || query === 'indian') && repo.isMadeInIndia;
 
-        if (!matchName && !matchRepo && !matchPays && !matchNote && !matchCat && !matchTags && !matchIndia) {
+        if (!matchName && !matchRepo && !matchPays && !matchNote && !matchUse && !matchCat && !matchTags) {
           return false;
         }
       }

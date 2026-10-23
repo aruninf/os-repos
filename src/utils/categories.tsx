@@ -225,6 +225,12 @@ export const CATEGORY_DETAILS: Record<CategoryType | string, CategoryInfo> = {
     color: 'text-emerald-400',
     badgeClass: 'text-emerald-400 bg-emerald-500/10 border-emerald-500/20',
     icon: <CreditCard size={14} />
+  },
+  media: {
+    label: 'AI Media & Upscaling',
+    color: 'text-rose-400',
+    badgeClass: 'text-rose-400 bg-rose-500/10 border-rose-500/20',
+    icon: <Activity size={14} />
   }
 };
 
