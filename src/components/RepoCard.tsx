@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { 
   Star, ArrowUpRight, Github, Zap, Code2, 
-  Bookmark, Copy, Check, ExternalLink, MapPin
+  Bookmark, Copy, Check, ExternalLink, MapPin, Share2
 } from 'lucide-react';
 import { Repo } from '../types';
 import { getCategoryDetails } from '../utils/categories';
@@ -48,6 +48,13 @@ export const RepoCard: React.FC<RepoCardProps> = ({
     e.stopPropagation();
     onToggleFavorite(repo.id);
     onShowToast(isFavorite ? `Removed ${repo.name} from saved` : `Saved ${repo.name} to bookmarks`);
+  };
+
+  const handleShareClick = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    const shareUrl = `${window.location.origin}${window.location.pathname}?repo=${encodeURIComponent(repo.id)}`;
+    navigator.clipboard.writeText(shareUrl);
+    onShowToast(`Copied share link for ${repo.name}!`);
   };
 
   return (
@@ -259,15 +266,28 @@ export const RepoCard: React.FC<RepoCardProps> = ({
         {/* Card Footer: Quick Actions */}
         {/* ========================================================= */}
         <div className="pt-3 border-t border-white/5 flex items-center justify-between gap-2 mt-auto">
-          {/* Copy clone command */}
-          <button
-            onClick={handleCopyClone}
-            className="flex items-center gap-1.5 text-xs font-mono text-slate-400 hover:text-emerald-300 py-1 px-2.5 rounded-lg bg-white/5 hover:bg-white/10 transition-colors"
-            title="Copy git clone command"
-          >
-            {copied ? <Check size={13} className="text-emerald-400" /> : <Copy size={13} />}
-            <span>{copied ? 'Copied' : 'Clone'}</span>
-          </button>
+          {/* Actions group */}
+          <div className="flex items-center gap-1.5">
+            {/* Copy clone command */}
+            <button
+              onClick={handleCopyClone}
+              className="flex items-center gap-1.5 text-xs font-mono text-slate-400 hover:text-emerald-300 py-1 px-2.5 rounded-lg bg-white/5 hover:bg-white/10 transition-colors"
+              title="Copy git clone command"
+            >
+              {copied ? <Check size={13} className="text-emerald-400" /> : <Copy size={13} />}
+              <span>{copied ? 'Copied' : 'Clone'}</span>
+            </button>
+
+            {/* Share link button */}
+            <button
+              onClick={handleShareClick}
+              className="flex items-center gap-1 text-xs text-slate-400 hover:text-emerald-300 py-1 px-2 rounded-lg bg-white/5 hover:bg-white/10 transition-colors"
+              title="Copy shareable link"
+            >
+              <Share2 size={12} />
+              <span className="hidden sm:inline">Share</span>
+            </button>
+          </div>
 
           {/* Open Deep-dive Modal */}
           <span className="text-xs text-slate-400 group-hover:text-emerald-400 font-medium flex items-center gap-1 transition-colors">

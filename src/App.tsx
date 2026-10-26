@@ -59,6 +59,33 @@ export default function App() {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, []);
 
+  // Handle URL deep-linking (?repo=mixpost)
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const repoParam = params.get('repo');
+    if (repoParam) {
+      const match = REPOS.find(
+        r => r.id.toLowerCase() === repoParam.toLowerCase() ||
+             r.repo.toLowerCase() === repoParam.toLowerCase() ||
+             r.name.toLowerCase() === repoParam.toLowerCase()
+      );
+      if (match) {
+        setSelectedRepo(match);
+      }
+    }
+  }, []);
+
+  const handleSelectRepo = useCallback((repo: Repo | null) => {
+    setSelectedRepo(repo);
+    const url = new URL(window.location.href);
+    if (repo) {
+      url.searchParams.set('repo', repo.id);
+    } else {
+      url.searchParams.delete('repo');
+    }
+    window.history.replaceState({}, '', url.toString());
+  }, []);
+
   // Available unique categories
   const categories = useMemo(() => {
     return Array.from(new Set(REPOS.map(r => r.cat))).sort();
@@ -191,7 +218,7 @@ export default function App() {
                     repo={repo}
                     isFavorite={isFavorite(repo.id)}
                     onToggleFavorite={toggleFavorite}
-                    onSelectRepo={setSelectedRepo}
+                    onSelectRepo={handleSelectRepo}
                     onShowToast={showToast}
                     animationDelayMs={Math.min((idx % 12) * 40, 400)}
                   />
@@ -202,7 +229,7 @@ export default function App() {
                 repos={filteredRepos}
                 favorites={favorites}
                 onToggleFavorite={toggleFavorite}
-                onSelectRepo={setSelectedRepo}
+                onSelectRepo={handleSelectRepo}
                 onShowToast={showToast}
               />
             )
@@ -236,7 +263,7 @@ export default function App() {
       <RepoDetailModal
         repo={selectedRepo}
         isOpen={Boolean(selectedRepo)}
-        onClose={() => setSelectedRepo(null)}
+        onClose={() => handleSelectRepo(null)}
         isFavorite={selectedRepo ? isFavorite(selectedRepo.id) : false}
         onToggleFavorite={toggleFavorite}
         onShowToast={showToast}
@@ -247,7 +274,7 @@ export default function App() {
         isOpen={isCalculatorOpen}
         onClose={() => setIsCalculatorOpen(false)}
         repos={REPOS}
-        onSelectRepo={(r) => setSelectedRepo(r)}
+        onSelectRepo={handleSelectRepo}
       />
 
       {/* Export Modal */}

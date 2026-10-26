@@ -36,6 +36,12 @@ export type CategoryType =
   | 'security'
   | 'media';
 
+export interface HowToUseGuide {
+  summary?: string;
+  forUsers?: string[];
+  forDevs?: string[];
+}
+
 export interface Repo {
   id: string;
   name: string;
@@ -46,6 +52,9 @@ export interface Repo {
   pays: string;
   note: string;
   use?: string;
+  description?: string;
+  targetAudience?: string[];
+  howToUse?: HowToUseGuide | string[];
   tags?: string[];
   website?: string;
   monthlySavingsUsd?: number;

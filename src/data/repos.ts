@@ -329,6 +329,9 @@ export const REPOS: Repo[] = [
     cat: "marketing",
     pays: "Buffer $100/mo",
     note: "30+ social networks, AI captions, team approval; charge ₹5k/mo to manage 3 client accounts",
+    use: "Cross-platform social media scheduling with AI post generation; deploy for marketing teams or client agencies to automate Twitter, LinkedIn, Instagram, TikTok, and Reddit",
+    description: "Modern open-source social media management suite powered by AI. Schedule to 30+ networks, generate AI captions, collaborate with team approval flows, and track analytics without recurring SaaS fees.",
+    targetAudience: ["Social Media Agencies", "Content Teams", "AI-first Marketers", "Indie Hackers"],
     monthlySavingsUsd: 100,
     website: "https://postiz.com",
     tags: ["social-media", "buffer-alternative", "scheduling", "marketing", "twitter-linkedin"],
@@ -341,11 +344,33 @@ export const REPOS: Repo[] = [
     stars: "3.6k",
     starCount: 3600,
     cat: "marketing",
-    pays: "Buffer / Hootsuite",
+    pays: "Buffer $100/mo / Hootsuite $249/mo",
     note: "MIT fully self-hosted social media management with no client account limits",
-    monthlySavingsUsd: 50,
+    use: "Manage social media publishing & scheduling for multiple client brands or creator accounts without paying Buffer or Hootsuite $100+/mo per brand. Setup and charge clients ₹5k-15k/month ($100-$250/mo) to host and manage an automated cross-platform social publishing engine.",
+    description: "Self-hosted social media management platform that replaces Buffer and Hootsuite. Compose, visually preview, schedule, and automate posts to Twitter/X, Facebook, Instagram, LinkedIn, YouTube, TikTok, Pinterest, Bluesky, Mastodon, and Threads with unified analytics and zero account limits.",
+    targetAudience: [
+      "Digital Marketing Agencies & Freelancers",
+      "Content Creators & Solopreneurs",
+      "Brands wanting 100% private & self-hosted data",
+      "Social Media Managers managing multiple client accounts"
+    ],
+    howToUse: {
+      summary: "Mixpost gives you a visual web dashboard just like Buffer to schedule, format, and automate posts across all major social networks.",
+      forUsers: [
+        "Connect Social Accounts: Open Settings > Accounts and authorize your Twitter/X, LinkedIn, Facebook, Instagram, YouTube, TikTok, or Threads profiles.",
+        "Compose & Tailor Posts: Use the visual composer to write copy, add images or videos, preview how the post renders on each platform, and adjust captions per network.",
+        "Schedule on the Visual Calendar: Drop posts into specific time slots, regular weekly queue buckets, or publish immediately.",
+        "Track Engagement & Reach: Review delivery confirmations, follower reactions, and engagement metrics directly inside the analytics dashboard."
+      ],
+      forDevs: [
+        "1-Click Docker Launch: git clone https://github.com/inovexcorp/mixpost.git && cd mixpost && docker compose up -d",
+        "Access Dashboard: Open http://localhost:8080 in your browser (or point your domain with SSL via Caddy/Nginx).",
+        "Setup API Credentials: Add your official Twitter/X, Meta/Facebook, or LinkedIn developer app client IDs in the admin settings."
+      ]
+    },
+    monthlySavingsUsd: 150,
     website: "https://mixpost.app",
-    tags: ["social-scheduler", "marketing", "hootsuite", "agency"],
+    tags: ["social-scheduler", "marketing", "hootsuite", "agency", "buffer-alternative", "social-media"],
     dockerCommand: "git clone https://github.com/inovexcorp/mixpost.git && cd mixpost && docker compose up -d"
   },
   {

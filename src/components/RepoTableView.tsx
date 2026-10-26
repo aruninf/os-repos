@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { 
-  Star, Github, ExternalLink, Bookmark, Copy, Check, Zap, MapPin 
+  Star, Github, ExternalLink, Bookmark, Copy, Check, Zap, MapPin, Share2
 } from 'lucide-react';
 import { Repo } from '../types';
 import { getCategoryDetails } from '../utils/categories';
@@ -28,6 +28,13 @@ export const RepoTableView: React.FC<RepoTableViewProps> = ({
     setCopiedId(repo.id);
     onShowToast(`Copied clone command for ${repo.name}`);
     setTimeout(() => setCopiedId(null), 2000);
+  };
+
+  const handleShare = (e: React.MouseEvent, repo: Repo) => {
+    e.stopPropagation();
+    const shareUrl = `${window.location.origin}${window.location.pathname}?repo=${encodeURIComponent(repo.id)}`;
+    navigator.clipboard.writeText(shareUrl);
+    onShowToast(`Copied share link for ${repo.name}!`);
   };
 
   return (
@@ -163,6 +170,13 @@ export const RepoTableView: React.FC<RepoTableViewProps> = ({
                   {/* Actions */}
                   <td className="py-3.5 px-4 sm:px-6 align-top text-right whitespace-nowrap">
                     <div className="flex items-center justify-end gap-1.5" onClick={(e) => e.stopPropagation()}>
+                      <button
+                        onClick={(e) => handleShare(e, repo)}
+                        className="p-1.5 rounded-lg bg-white/5 hover:bg-white/10 text-slate-400 hover:text-white transition-colors"
+                        title="Copy share link"
+                      >
+                        <Share2 size={14} />
+                      </button>
                       <button
                         onClick={(e) => handleCopyClone(e, repo)}
                         className="p-1.5 rounded-lg bg-white/5 hover:bg-white/10 text-slate-400 hover:text-white transition-colors"
