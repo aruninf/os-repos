@@ -3041,5 +3041,61 @@ export const REPOS: Repo[] = [
     website: "https://github.com/JingjieXiong/recruit-ai-platform",
     tags: ["recruiting-ai", "screening", "hr-stack", "talent-acquisition"],
     dockerCommand: "git clone https://github.com/JingjieXiong/recruit-ai-platform.git"
+  },
+
+  // ==========================================
+  // 20. ROBOTICS, VISION-ACTION & CONTINUAL LEARNING
+  // ==========================================
+  {
+    id: "lerobot",
+    name: "LeRobot",
+    repo: "huggingface/lerobot",
+    stars: "28k+",
+    starCount: 28472,
+    cat: "ai",
+    pays: "-",
+    note: "End-to-end robot learning from human/expert demos via Hugging Face ecosystem",
+    use: "Train robot manipulation skills from demos for home-robotics/automation service clients; sell robot-learning pipelines",
+    website: "https://huggingface.co/docs/lerobot",
+    tags: ["robotics", "embodied-ai", "manipulation", "robot-learning", "huggingface"]
+  },
+  {
+    id: "openvla",
+    name: "OpenVLA",
+    repo: "openvla/openvla",
+    stars: "7.2k+",
+    starCount: 7210,
+    cat: "ai",
+    pays: "-",
+    note: "Open-source vision-language-action model for robotic manipulation (MIT)",
+    use: "Replace proprietary robot foundation models for manipulation gigs; robot-as-a-service demos and pick-place automation",
+    website: "https://github.com/openvla/openvla",
+    tags: ["vla", "vision-language-action", "robotics", "manipulation", "embodied-ai"]
+  },
+  {
+    id: "robocasa",
+    name: "RoboCasa",
+    repo: "robocasa/robocasa",
+    stars: "1.8k",
+    starCount: 1836,
+    cat: "ai",
+    pays: "-",
+    note: "Large-scale simulation of everyday tasks for generalist robots (humanoid/home)",
+    use: "Sim manipulation training data for home-robotics and generalist robot service businesses",
+    website: "https://robocasa.ai",
+    tags: ["robotics", "simulation", "humanoid", "robot-learning"]
+  },
+  {
+    id: "libero",
+    name: "LIBERO",
+    repo: "Lifelong-Robot-Learning/LIBERO",
+    stars: "2.5k",
+    starCount: 2472,
+    cat: "ai",
+    pays: "-",
+    note: "Lifelong robot learning benchmark: knowledge transfer across tasks (MIT)",
+    use: "Validate continual-learning pipelines for robotics service/automation gigs",
+    website: "https://github.com/Lifelong-Robot-Learning/LIBERO",
+    tags: ["robotics", "lifelong-learning", "benchmark", "manipulation"]
   }
 ];

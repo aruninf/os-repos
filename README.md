@@ -11,7 +11,7 @@
 
 ## Highlights & Features
 
-- **211 Curated Repositories**: Covering AI Media Generation, Design & Video Editors, HR & Recruiting, Mobile AI, Automation, CRM, ERP, Observability, Marketing, Mobile Testing, and Client Billing.
+- **215 Curated Repositories**: Covering AI Media Generation, Design & Video Editors, HR & Recruiting, Mobile AI, Automation, CRM, ERP, Observability, Marketing, Mobile Testing, and Client Billing.
 - **Commercial Tool Replacements**: Direct alternatives to expensive services such as Midjourney, Photoshop, Premiere, Runway, Zapier, Salesforce, Datadog, Calendly, Retool, DocuSign, Slack, and Jira.
 - **Where to Use & Monetization Gigs**: Actionable guidance on repository cards and deep-dive modals detailing practical client service opportunities, freelancing gigs, and agency deployment workflows.
 - **Interactive Cost Savings Calculator**: Estimate team and client subscription savings by selecting the commercial tools you currently pay for.
