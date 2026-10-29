@@ -7,7 +7,7 @@ export const Footer: React.FC = () => {
   };
 
   return (
-    <footer className="border-t border-white/5 bg-[#07080c] relative z-10 pt-16 pb-12">
+    <footer className="border-t border-white/5 bg-background relative z-10 pt-16 pb-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Main Footer Row */}

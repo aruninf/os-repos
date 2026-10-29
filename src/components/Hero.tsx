@@ -1,5 +1,5 @@
 import React from 'react';
-import { Zap, Star, DollarSign, Layers } from 'lucide-react';
+import { Star, DollarSign, Layers } from 'lucide-react';
 import { Repo } from '../types';
 
 interface HeroProps {
@@ -15,19 +15,10 @@ export const Hero: React.FC<HeroProps> = ({ repos }) => {
 
   return (
     <section className="relative pt-32 pb-12 sm:pb-16 text-center max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      {/* Decorative gradient glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-gradient-to-r from-emerald-500/10 via-teal-500/10 to-cyan-500/10 blur-[130px] -z-10 pointer-events-none" />
-
-      {/* Badge */}
-      <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-semibold uppercase tracking-wider mb-6 shadow-sm">
-        <Zap size={14} className="text-emerald-400" />
-        <span>Curated Open-Source Directory</span>
-      </div>
-
       {/* Main Title - Simple, Professional, SEO Friendly */}
       <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold text-white tracking-tight leading-[1.1] mb-6">
         Discover Open-Source <br className="hidden sm:block" />
-        <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-400 drop-shadow-sm">
+        <span className="text-emerald-400">
           High-Value Alternatives
         </span> to Paid Software
       </h1>
@@ -44,7 +35,7 @@ export const Hero: React.FC<HeroProps> = ({ repos }) => {
             <Layers size={22} />
             <span>{repos.length}</span>
           </div>
-          <span className="text-xs uppercase font-semibold text-slate-400 tracking-wider">Curated Projects</span>
+          <span className="text-xs font-medium text-slate-400">Curated projects</span>
         </div>
 
         <div className="glass-panel p-4 rounded-2xl flex flex-col items-center justify-center text-center">
@@ -52,7 +43,7 @@ export const Hero: React.FC<HeroProps> = ({ repos }) => {
             <Star size={22} className="fill-amber-400/20" />
             <span>{formattedStars}</span>
           </div>
-          <span className="text-xs uppercase font-semibold text-slate-400 tracking-wider">GitHub Stars</span>
+          <span className="text-xs font-medium text-slate-400">GitHub stars</span>
         </div>
 
         <div className="glass-panel p-4 rounded-2xl flex flex-col items-center justify-center text-center">
@@ -60,7 +51,7 @@ export const Hero: React.FC<HeroProps> = ({ repos }) => {
             <DollarSign size={22} />
             <span>${estimatedSavings.toLocaleString()}</span>
           </div>
-          <span className="text-xs uppercase font-semibold text-slate-400 tracking-wider">Monthly Replaced</span>
+          <span className="text-xs font-medium text-slate-400">Monthly replaced</span>
         </div>
       </div>
     </section>

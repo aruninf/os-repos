@@ -55,12 +55,10 @@ export const FilterBar: React.FC<FilterBarProps> = ({
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8 space-y-4">
       {/* Primary Search & Controls Bar */}
       <div className="relative group">
-        <div className="absolute -inset-0.5 bg-gradient-to-r from-emerald-500/20 via-teal-500/20 to-cyan-500/20 rounded-2xl blur-md opacity-50 group-hover:opacity-100 transition duration-500" />
-        
         <div className="relative glass-panel rounded-2xl p-2.5 sm:p-3 flex flex-col md:flex-row gap-2.5 items-stretch shadow-2xl">
           
           {/* Search Input Box */}
-          <div className="relative flex-grow flex items-center bg-[#0d0f17] rounded-xl border border-white/5 hover:border-white/10 focus-within:border-emerald-500/50 transition-colors">
+          <div className="relative flex-grow flex items-center bg-surface-300 rounded-xl border border-white/5 hover:border-white/10 focus-within:border-emerald-500/50 transition-colors">
             <Search className="absolute left-3.5 text-slate-400" size={19} />
             <input 
               id="search-input"
@@ -94,7 +92,7 @@ export const FilterBar: React.FC<FilterBarProps> = ({
             <select 
               value={selectedCategory}
               onChange={(e) => onCategoryChange(e.target.value)}
-              className="w-full h-full appearance-none pl-3.5 pr-10 py-3.5 bg-[#0d0f17] border border-white/5 hover:border-white/10 rounded-xl outline-none text-white text-sm cursor-pointer focus:border-emerald-500/50 transition-colors"
+              className="w-full h-full appearance-none pl-3.5 pr-10 py-3.5 bg-surface-300 border border-white/5 hover:border-white/10 rounded-xl outline-none text-white text-sm cursor-pointer focus:border-emerald-500/50 transition-colors"
               aria-label="Filter by category"
             >
               <option value="">All Categories ({categories.length})</option>
@@ -112,7 +110,7 @@ export const FilterBar: React.FC<FilterBarProps> = ({
             <select 
               value={sortOption}
               onChange={(e) => onSortChange(e.target.value as SortOption)}
-              className="w-full h-full appearance-none pl-3.5 pr-10 py-3.5 bg-[#0d0f17] border border-white/5 hover:border-white/10 rounded-xl outline-none text-white text-sm cursor-pointer focus:border-emerald-500/50 transition-colors"
+              className="w-full h-full appearance-none pl-3.5 pr-10 py-3.5 bg-surface-300 border border-white/5 hover:border-white/10 rounded-xl outline-none text-white text-sm cursor-pointer focus:border-emerald-500/50 transition-colors"
               aria-label="Sort projects"
             >
               <option value="stars-desc">Most Stars</option>
@@ -125,7 +123,7 @@ export const FilterBar: React.FC<FilterBarProps> = ({
           </div>
 
           {/* View Mode Toggle (Grid vs Table) */}
-          <div className="flex items-center justify-end sm:justify-start bg-[#0d0f17] rounded-xl border border-white/5 p-1 gap-1 flex-shrink-0 self-end md:self-auto">
+          <div className="flex items-center justify-end sm:justify-start bg-surface-300 rounded-xl border border-white/5 p-1 gap-1 flex-shrink-0 self-end md:self-auto">
             <button
               onClick={() => onViewModeChange('grid')}
               className={`p-2 rounded-lg transition-colors ${
@@ -164,10 +162,10 @@ export const FilterBar: React.FC<FilterBarProps> = ({
               <button
                 key={tag.id}
                 onClick={() => onFilterTagChange(tag.id)}
-                className={`inline-flex items-center gap-1.5 text-xs font-medium px-3 py-1.5 rounded-lg border transition-all ${
+                className={`inline-flex items-center gap-1.5 text-xs font-medium px-3 py-1.5 rounded-lg border transition ${
                   isActive 
                     ? 'bg-emerald-500/20 border-emerald-500/40 text-emerald-300 shadow-sm shadow-emerald-500/10' 
-                    : 'bg-[#11131a] hover:bg-white/5 border-white/5 hover:border-white/10 text-slate-400 hover:text-slate-200'
+                    : 'bg-surface-200 hover:bg-white/5 border-white/5 hover:border-white/10 text-slate-400 hover:text-slate-200'
                 }`}
               >
                 {tag.icon}

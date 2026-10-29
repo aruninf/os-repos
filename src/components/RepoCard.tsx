@@ -60,7 +60,7 @@ export const RepoCard: React.FC<RepoCardProps> = ({
   return (
     <article 
       onClick={() => onSelectRepo(repo)}
-      className="group relative glass-panel glass-panel-hover rounded-2xl p-4 sm:p-5 flex flex-col h-full cursor-pointer overflow-hidden transition-all duration-300"
+      className="group relative glass-panel glass-panel-hover rounded-2xl p-4 sm:p-5 flex flex-col h-full cursor-pointer overflow-hidden transition duration-300"
       style={{
         animation: 'fadeInUp 0.4s ease-out forwards',
         animationDelay: `${animationDelayMs}ms`
@@ -75,7 +75,7 @@ export const RepoCard: React.FC<RepoCardProps> = ({
         {/* ========================================================= */}
         {/* Visual Media Header: OpenGraph Preview Banner / Fallback */}
         {/* ========================================================= */}
-        <div className="relative w-full aspect-[16/9] sm:h-44 rounded-xl overflow-hidden mb-4 bg-[#0a0c13] border border-white/10 group-hover:border-emerald-500/30 transition-colors shadow-inner flex-shrink-0">
+        <div className="relative w-full aspect-[16/9] sm:h-44 rounded-xl overflow-hidden mb-4 bg-background border border-white/10 group-hover:border-emerald-500/30 transition-colors shadow-inner flex-shrink-0">
           
           {!imageError ? (
             <img
@@ -85,7 +85,7 @@ export const RepoCard: React.FC<RepoCardProps> = ({
               decoding="async"
               onLoad={() => setImageLoaded(true)}
               onError={() => setImageError(true)}
-              className={`w-full h-full object-cover object-top transition-all duration-500 group-hover:scale-105 ${
+              className={`w-full h-full object-cover object-top transition-opacity ${
                 imageLoaded ? 'opacity-100' : 'opacity-0'
               }`}
             />
@@ -93,8 +93,8 @@ export const RepoCard: React.FC<RepoCardProps> = ({
 
           {/* Fallback Graphic Banner if image fails or while loading */}
           {(!imageLoaded || imageError) && (
-            <div className={`absolute inset-0 flex flex-col items-center justify-center p-4 bg-gradient-to-br from-[#121522] via-[#0d0f18] to-[#151929] ${imageLoaded && !imageError ? 'hidden' : ''}`}>
-              <div className="absolute inset-0 bg-[radial-gradient(#ffffff0a_1px,transparent_1px)] [background-size:14px_14px] pointer-events-none" />
+            <div className={`absolute inset-0 flex flex-col items-center justify-center p-4 bg-gradient-to-br from-surface-100 via-surface-300 to-surface-50 ${imageLoaded && !imageError ? 'hidden' : ''}`}>
+              <div className="absolute inset-0 dot-grid [background-size:14px_14px] pointer-events-none" />
               
               <div className="relative z-10 flex flex-col items-center text-center">
                 {!avatarError ? (
@@ -121,7 +121,7 @@ export const RepoCard: React.FC<RepoCardProps> = ({
 
           {/* Floating Category Badge (Top-Left) */}
           <div className="absolute top-2.5 left-2.5 z-20 flex items-center gap-1.5">
-            <span className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-[11px] font-semibold uppercase tracking-wider backdrop-blur-md bg-black/70 border ${catDetails.badgeClass} shadow-md`}>
+            <span className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-[11px] font-semibold backdrop-blur-md bg-black/70 border ${catDetails.badgeClass} shadow-md`}>
               {catDetails.icon}
               <span>{catDetails.label}</span>
             </span>
@@ -130,7 +130,7 @@ export const RepoCard: React.FC<RepoCardProps> = ({
           {/* Floating Bookmark Button (Top-Right) */}
           <button
             onClick={handleFavoriteClick}
-            className={`absolute top-2.5 right-2.5 z-20 p-1.5 rounded-lg backdrop-blur-md transition-all shadow-md ${
+            className={`absolute top-2.5 right-2.5 z-20 p-1.5 rounded-lg backdrop-blur-md transition shadow-md ${
               isFavorite 
                 ? 'bg-amber-500/30 border border-amber-400/80 text-amber-300' 
                 : 'bg-black/60 border border-white/15 text-slate-300 hover:text-white hover:bg-black/80'
@@ -144,7 +144,7 @@ export const RepoCard: React.FC<RepoCardProps> = ({
           {/* Floating Stars Pill (Bottom-Right) */}
           <div className="absolute bottom-2.5 right-2.5 z-20 flex items-center gap-1 text-[11px] font-mono font-bold backdrop-blur-md bg-black/80 text-amber-300 px-2.5 py-1 rounded-lg border border-amber-500/25 shadow-md">
             <Star size={12} className="fill-amber-400 text-amber-400" />
-            <span>{repo.stars}</span>
+            <span>{repo.stars === '—' ? 'Unrated' : repo.stars}</span>
           </div>
 
           {/* Floating Monthly Savings Pill (Bottom-Left) */}
@@ -165,7 +165,7 @@ export const RepoCard: React.FC<RepoCardProps> = ({
                 src={avatarUrl}
                 alt={owner}
                 onError={() => setAvatarError(true)}
-                className="w-10 h-10 rounded-xl border border-white/10 bg-[#0d0f17] object-cover flex-shrink-0 shadow-sm"
+                className="w-10 h-10 rounded-xl border border-white/10 bg-surface-300 object-cover flex-shrink-0 shadow-sm"
                 loading="lazy"
               />
             ) : (
@@ -177,7 +177,7 @@ export const RepoCard: React.FC<RepoCardProps> = ({
             <div className="min-w-0">
               <h3 className="text-lg font-bold text-white group-hover:text-emerald-400 transition-colors flex items-center gap-1.5 truncate">
                 <span className="truncate">{repo.name}</span>
-                <ArrowUpRight size={15} className="opacity-0 -translate-x-1 translate-y-0.5 group-hover:opacity-100 group-hover:translate-x-0 group-hover:translate-y-0 transition-all text-emerald-400 flex-shrink-0" />
+                <ArrowUpRight size={15} className="opacity-0 -translate-x-1 translate-y-0.5 group-hover:opacity-100 group-hover:translate-x-0 group-hover:translate-y-0 transition text-emerald-400 flex-shrink-0" />
               </h3>
               
               <a 
@@ -195,17 +195,17 @@ export const RepoCard: React.FC<RepoCardProps> = ({
         </div>
 
         {/* ========================================================= */}
-        {/* Body Cards: Replaces, Where to Use, Opportunity Note */}
+        {/* Body Cards: Replaces, Where to use, Opportunity Note */}
         {/* ========================================================= */}
         <div className="space-y-2.5 mb-4 flex-grow">
           {/* Replaces Tool */}
-          <div className="bg-[#0e1017] rounded-xl p-3 border border-white/5 flex items-start gap-2.5">
+          <div className="bg-surface-300 rounded-xl p-3 border border-white/5 flex items-start gap-2.5">
             <div className="mt-0.5 bg-rose-500/10 text-rose-400 p-1 rounded-md flex-shrink-0">
               <Zap size={13} />
             </div>
             <div className="min-w-0 flex-1">
-              <span className="block text-[10px] font-semibold text-slate-400 uppercase tracking-wider mb-0.5">
-                Replaces Paid Software
+              <span className="block text-[10px] font-medium text-slate-400 mb-0.5">
+                Replaces paid software
               </span>
               <p className="text-xs sm:text-sm font-medium text-slate-200 truncate">
                 {hasDirectReplacement ? repo.pays : <span className="text-slate-500 italic">Self-standing tool</span>}
@@ -213,15 +213,15 @@ export const RepoCard: React.FC<RepoCardProps> = ({
             </div>
           </div>
 
-          {/* Where to Use & Monetization Gigs */}
+          {/* Where to use & Monetization Gigs */}
           {repo.use && (
-            <div className="bg-[#0e1017] rounded-xl p-3 border border-sky-500/15 flex items-start gap-2.5">
+            <div className="bg-surface-300 rounded-xl p-3 border border-sky-500/15 flex items-start gap-2.5">
               <div className="mt-0.5 bg-sky-500/10 text-sky-400 p-1 rounded-md flex-shrink-0">
                 <MapPin size={13} />
               </div>
               <div className="min-w-0 flex-1">
-                <span className="block text-[10px] font-semibold text-sky-400 uppercase tracking-wider mb-0.5">
-                  Where to Use
+                <span className="block text-[10px] font-medium text-sky-400 mb-0.5">
+                  Where to use
                 </span>
                 <p className="text-xs text-slate-300 leading-relaxed line-clamp-2">
                   {repo.use}
@@ -230,14 +230,14 @@ export const RepoCard: React.FC<RepoCardProps> = ({
             </div>
           )}
 
-          {/* Opportunity & Deployment Note */}
-          <div className="bg-[#0e1017] rounded-xl p-3 border border-white/5 flex items-start gap-2.5">
+          {/* Opportunity & deployment note */}
+          <div className="bg-surface-300 rounded-xl p-3 border border-white/5 flex items-start gap-2.5">
             <div className="mt-0.5 bg-emerald-500/10 text-emerald-400 p-1 rounded-md flex-shrink-0">
               <Code2 size={13} />
             </div>
             <div className="min-w-0 flex-1">
-              <span className="block text-[10px] font-semibold text-slate-400 uppercase tracking-wider mb-0.5">
-                Opportunity & Deployment Note
+              <span className="block text-[10px] font-medium text-slate-400 mb-0.5">
+                Opportunity & deployment note
               </span>
               <p className="text-xs text-slate-300 leading-relaxed line-clamp-2">
                 {repo.note}
@@ -250,12 +250,12 @@ export const RepoCard: React.FC<RepoCardProps> = ({
         {repo.tags && repo.tags.length > 0 && (
           <div className="flex flex-wrap gap-1.5 mb-3.5">
             {repo.tags.slice(0, 3).map(tag => (
-              <span key={tag} className="text-[10px] font-mono px-2 py-0.5 rounded-md bg-white/[0.04] text-slate-400 border border-white/[0.06]">
+              <span key={tag} className="text-[10px] px-2 py-0.5 rounded-md bg-white/[0.04] text-slate-400 border border-white/[0.06]">
                 #{tag}
               </span>
             ))}
             {repo.tags.length > 3 && (
-              <span className="text-[10px] font-mono px-1.5 py-0.5 rounded-md text-slate-500">
+              <span className="text-[10px] px-1.5 py-0.5 rounded-md text-slate-500">
                 +{repo.tags.length - 3}
               </span>
             )}

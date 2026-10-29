@@ -66,7 +66,7 @@ export const CalculatorModal: React.FC<CalculatorModalProps> = ({
 
       {/* Modal Dialog */}
       <div 
-        className="relative bg-[#0d0f17] border border-white/10 rounded-3xl max-w-3xl w-full max-h-[90vh] overflow-y-auto shadow-2xl z-10 p-6 sm:p-8 flex flex-col"
+        className="relative bg-surface-300 rounded-3xl max-w-3xl w-full max-h-[90vh] overflow-y-auto shadow-2xl z-10 p-6 sm:p-8 flex flex-col"
         role="dialog"
         aria-modal="true"
       >
@@ -97,7 +97,7 @@ export const CalculatorModal: React.FC<CalculatorModalProps> = ({
         {/* Big Savings Metrics Display */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 my-6">
           <div className="glass-panel p-4 rounded-2xl border-emerald-500/30 bg-emerald-500/5 text-center">
-            <span className="block text-xs uppercase font-semibold text-emerald-400 mb-1">
+            <span className="block text-xs font-medium text-emerald-400 mb-1">
               Monthly Cost Saved
             </span>
             <span className="text-3xl font-extrabold text-white font-mono">
@@ -107,7 +107,7 @@ export const CalculatorModal: React.FC<CalculatorModalProps> = ({
           </div>
 
           <div className="glass-panel p-4 rounded-2xl border-cyan-500/30 bg-cyan-500/5 text-center">
-            <span className="block text-xs uppercase font-semibold text-cyan-400 mb-1">
+            <span className="block text-xs font-medium text-cyan-400 mb-1">
               Annual Runway Saved
             </span>
             <span className="text-3xl font-extrabold text-white font-mono">
@@ -117,7 +117,7 @@ export const CalculatorModal: React.FC<CalculatorModalProps> = ({
           </div>
 
           <div className="glass-panel p-4 rounded-2xl border-purple-500/30 bg-purple-500/5 text-center">
-            <span className="block text-xs uppercase font-semibold text-purple-400 mb-1">
+            <span className="block text-xs font-medium text-purple-400 mb-1">
               Client Retainer Potential
             </span>
             <span className="text-3xl font-extrabold text-white font-mono">
@@ -130,8 +130,8 @@ export const CalculatorModal: React.FC<CalculatorModalProps> = ({
         {/* Interactive Tool Selector */}
         <div className="space-y-3 flex-grow">
           <div className="flex items-center justify-between">
-            <h3 className="text-xs uppercase font-semibold text-slate-400 tracking-wider">
-              Select Commercial Tools ({selectedToolIds.length} chosen)
+            <h3 className="text-xs font-medium text-slate-400">
+              Select commercial tools ({selectedToolIds.length} chosen)
             </h3>
             <div className="space-x-2 text-xs">
               <button
@@ -140,7 +140,6 @@ export const CalculatorModal: React.FC<CalculatorModalProps> = ({
               >
                 Select All
               </button>
-              <span className="text-slate-600">•</span>
               <button
                 onClick={() => setSelectedToolIds([])}
                 className="text-slate-400 hover:underline"
@@ -157,7 +156,7 @@ export const CalculatorModal: React.FC<CalculatorModalProps> = ({
                 <div
                   key={tool.id}
                   onClick={() => toggleTool(tool.id)}
-                  className={`p-3 rounded-xl border cursor-pointer transition-all flex items-center justify-between ${
+                  className={`p-3 rounded-xl border cursor-pointer transition flex items-center justify-between ${
                     isSelected
                       ? 'bg-emerald-500/10 border-emerald-500/40 text-white'
                       : 'bg-white/5 border-white/5 text-slate-400 hover:bg-white/10'
@@ -187,8 +186,8 @@ export const CalculatorModal: React.FC<CalculatorModalProps> = ({
         {/* Selected Stack Details */}
         {selectedRepos.length > 0 && (
           <div className="mt-6 pt-5 border-t border-white/10">
-            <h4 className="text-xs uppercase font-semibold text-slate-400 tracking-wider mb-3">
-              Your Recommended Open-Source Stack:
+            <h4 className="text-xs font-medium text-slate-400 mb-3">
+              Your recommended open-source stack:
             </h4>
             <div className="flex flex-wrap gap-2">
               {selectedRepos.map(r => (

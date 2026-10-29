@@ -24,7 +24,7 @@ export const Toast: React.FC<ToastProps> = ({ toast, onClose }) => {
   if (!toast) return null;
 
   return (
-    <div className="fixed bottom-6 right-6 z-50 flex items-center gap-3 bg-[#161a24] border border-emerald-500/40 text-slate-100 px-4 py-3 rounded-xl shadow-2xl shadow-emerald-950/50 animate-fade-in text-sm backdrop-blur-md">
+    <div className="fixed bottom-6 right-6 z-50 flex items-center gap-3 bg-surface-100 border border-emerald-500/40 text-slate-100 px-4 py-3 rounded-xl shadow-emerald-950/50 animate-fade-in text-sm backdrop-blur-md">
       {toast.type === 'info' ? (
         <Info size={18} className="text-cyan-400 flex-shrink-0" />
       ) : (

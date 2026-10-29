@@ -1,6 +1,37 @@
+/* Hallmark · checked: 2026-10-29 · genre: modern-minimal (inferred)
+ * floor: 0 FAIL after sweep · fixed: 10a, 19, 27, 48, 54, 67
+ * waive 26b · no disabled control or aria-disabled anywhere on the screen
+ * waive 64 · mono remains only on figures, per-month amounts, URLs and code blocks; every label is the body face
+ * dismissed 28a · thumbnails in a 215-item list; heading and filter chrome, not images, paint the LCP
+ * dismissed 29-glass · committed glass material over its own backdrop in every modal and pill
+ * dismissed 74 · palette is declared in tailwind.config.js as the project's brand tokens
+ * built: the project · redesign: polish · v2.0.0
+ * finish-review: subagent · 5 findings · 4 resolved 1 owner (fabricated docker line: owner content, not polish) */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  --color-background: #090a0f;
+  --color-surface-50: #1e212b;
+  --color-surface-100: #161822;
+  --color-surface-200: #11131a;
+  --color-surface-300: #0d0e14;
+  --color-ink: #e2e8f0;
+  --color-muted: #94a3b8;
+  --color-accent: #10b981;
+  --color-accent-cyan: #06b6d4;
+  --color-focus: #34d399;
+  --color-hairline: rgba(255, 255, 255, 0.08);
+  --color-glass: rgba(17, 19, 26, 0.75);
+  --color-glass-accent: rgba(16, 185, 129, 0.35);
+  --color-glass-shadow: rgba(16, 185, 129, 0.15);
+  --color-dot: rgba(255, 255, 255, 0.04);
+  --font-sans: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', Menlo, monospace;
+  --dur-micro: 120ms;
+  --dur-short: 240ms;
+}
 
 @layer base {
   html {
@@ -9,50 +40,67 @@
   }
 
   body {
-    background-color: #08090d;
-    color: #e2e8f0;
-    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background-color: var(--color-background);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
   }
 
-  /* Custom modern scrollbar */
+  /* Keyboard focus: instant, 3:1 or better (gates 15, 26a) */
+  :focus-visible {
+    outline: 2px solid var(--color-focus);
+    outline-offset: 2px;
+  }
+
   ::-webkit-scrollbar {
     width: 8px;
     height: 8px;
   }
   ::-webkit-scrollbar-track {
-    background: #0d0f17;
+    background: var(--color-surface-300);
   }
   ::-webkit-scrollbar-thumb {
-    background: #1e2230;
+    background: var(--color-surface-50);
     border-radius: 9999px;
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: #2d3348;
+    background: var(--color-surface-100);
   }
 }
 
 /* Glassmorphism card utilities */
 .glass-panel {
-  background: rgba(17, 19, 26, 0.75);
+  background: var(--color-glass);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--color-hairline);
+}
+
+/* Subtle dotted texture */
+.dot-grid {
+  background-image: radial-gradient(var(--color-dot) 1px, transparent 1px);
 }
 
 .glass-panel-hover {
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  transition:
+    border-color var(--dur-short) cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow var(--dur-short) cubic-bezier(0.16, 1, 0.3, 1),
+    transform var(--dur-short) cubic-bezier(0.16, 1, 0.3, 1);
 }
 .glass-panel-hover:hover {
-  border-color: rgba(16, 185, 129, 0.35);
-  box-shadow: 0 10px 30px -10px rgba(16, 185, 129, 0.15);
+  border-color: var(--color-glass-accent);
+  box-shadow: 0 10px 30px -10px var(--color-glass-shadow);
   transform: translateY(-2px);
 }
 
-/* Subtle glow effects */
-.radial-glow {
-  background: radial-gradient(circle at 50% 0%, rgba(16, 185, 129, 0.15) 0%, transparent 70%);
-}
-
-.radial-glow-cyan {
-  background: radial-gradient(circle at 50% 0%, rgba(6, 182, 212, 0.15) 0%, transparent 70%);
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

@@ -54,7 +54,7 @@ export const ExportModal: React.FC<ExportModalProps> = ({
       />
 
       <div 
-        className="relative bg-[#0d0f17] border border-white/10 rounded-3xl max-w-md w-full shadow-2xl z-10 p-6 sm:p-7"
+        className="relative bg-surface-300 rounded-3xl max-w-md w-full shadow-2xl z-10 p-6 sm:p-7"
         role="dialog"
         aria-modal="true"
       >
@@ -81,13 +81,13 @@ export const ExportModal: React.FC<ExportModalProps> = ({
               onShowToast('Downloaded CSV dataset');
               onClose();
             }}
-            className="w-full flex items-center justify-between p-3.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/5 hover:border-emerald-500/30 transition-all text-left group"
+            className="w-full flex items-center justify-between p-3.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/5 hover:border-emerald-500/30 transition text-left group"
           >
             <div className="flex items-center gap-3">
               <FileText size={20} className="text-emerald-400" />
               <div>
-                <span className="block text-sm font-semibold text-white">Export as CSV</span>
-                <span className="text-xs text-slate-400">Spreadsheet ready (.csv) for Excel or Google Sheets</span>
+                <span className="block text-sm font-semibold text-white whitespace-nowrap">Export as CSV</span>
+                <span className="text-xs text-slate-400 whitespace-nowrap">Spreadsheet ready (.csv) for Excel or Google Sheets</span>
               </div>
             </div>
             <Download size={16} className="text-slate-500 group-hover:text-emerald-400 transition-colors" />
@@ -100,13 +100,13 @@ export const ExportModal: React.FC<ExportModalProps> = ({
               onShowToast('Downloaded JSON dataset');
               onClose();
             }}
-            className="w-full flex items-center justify-between p-3.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/5 hover:border-cyan-500/30 transition-all text-left group"
+            className="w-full flex items-center justify-between p-3.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/5 hover:border-cyan-500/30 transition text-left group"
           >
             <div className="flex items-center gap-3">
               <FileCode size={20} className="text-cyan-400" />
               <div>
-                <span className="block text-sm font-semibold text-white">Export as JSON</span>
-                <span className="text-xs text-slate-400">Raw programmatic format (.json) with all metadata</span>
+                <span className="block text-sm font-semibold text-white whitespace-nowrap">Export as JSON</span>
+                <span className="text-xs text-slate-400 whitespace-nowrap">Raw programmatic format (.json) with all metadata</span>
               </div>
             </div>
             <Download size={16} className="text-slate-500 group-hover:text-cyan-400 transition-colors" />
@@ -119,13 +119,13 @@ export const ExportModal: React.FC<ExportModalProps> = ({
               onShowToast('Downloaded Markdown catalog');
               onClose();
             }}
-            className="w-full flex items-center justify-between p-3.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/5 hover:border-purple-500/30 transition-all text-left group"
+            className="w-full flex items-center justify-between p-3.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/5 hover:border-purple-500/30 transition text-left group"
           >
             <div className="flex items-center gap-3">
               <FileText size={20} className="text-purple-400" />
               <div>
-                <span className="block text-sm font-semibold text-white">Export as Markdown</span>
-                <span className="text-xs text-slate-400">Formatted GitHub Markdown table file (.md)</span>
+                <span className="block text-sm font-semibold text-white whitespace-nowrap">Export as Markdown</span>
+                <span className="text-xs text-slate-400 whitespace-nowrap">Formatted GitHub Markdown table file (.md)</span>
               </div>
             </div>
             <Download size={16} className="text-slate-500 group-hover:text-purple-400 transition-colors" />
@@ -134,7 +134,7 @@ export const ExportModal: React.FC<ExportModalProps> = ({
           {/* Copy Markdown directly */}
           <button
             onClick={handleCopyMarkdown}
-            className="w-full flex items-center justify-center gap-2 py-3 rounded-xl bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 font-medium text-sm transition-all"
+            className="w-full flex items-center justify-center gap-2 py-3 rounded-xl bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 font-medium text-sm transition"
           >
             {copiedMd ? <Check size={16} className="text-emerald-400" /> : <Copy size={16} />}
             <span>{copiedMd ? 'Copied to Clipboard!' : 'Copy Markdown Table to Clipboard'}</span>

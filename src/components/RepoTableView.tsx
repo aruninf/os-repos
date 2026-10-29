@@ -38,19 +38,15 @@ export const RepoTableView: React.FC<RepoTableViewProps> = ({
   };
 
   return (
-    <div className="glass-panel rounded-2xl overflow-hidden shadow-2xl border border-white/10">
+    <div className="glass-panel rounded-2xl overflow-hidden shadow-2xl">
       {/* Mobile/Tablet Horizontal Scroll Helper Hint */}
       <div className="lg:hidden flex items-center justify-between px-4 py-2 bg-white/[0.02] border-b border-white/5 text-[11px] text-slate-400">
-        <span className="flex items-center gap-1.5">
-          <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-          Scroll horizontally to view all columns
-        </span>
-        <span className="font-mono text-[10px] text-slate-500">↔ Swipe</span>
+        <span>Scroll horizontally to view all columns</span>
       </div>
 
       <div className="overflow-x-auto">
         <table className="w-full min-w-[1020px] text-left text-sm text-slate-300 border-collapse table-auto">
-          <thead className="bg-[#0b0d13] text-xs uppercase tracking-wider text-slate-400 font-semibold border-b border-white/5">
+          <thead className="bg-background text-xs text-slate-400 font-semibold border-b border-white/5">
             <tr>
               <th scope="col" className="py-4 px-4 sm:px-6 w-[260px] min-w-[240px]">Project</th>
               <th scope="col" className="py-4 px-3 w-[100px] min-w-[90px] whitespace-nowrap">Stars</th>
@@ -95,7 +91,7 @@ export const RepoTableView: React.FC<RepoTableViewProps> = ({
                         onError={(e) => {
                           e.currentTarget.style.display = 'none';
                         }}
-                        className="w-8 h-8 rounded-lg border border-white/10 bg-[#0d0f17] object-cover flex-shrink-0 mt-0.5"
+                        className="w-8 h-8 rounded-lg border border-white/10 bg-surface-300 object-cover flex-shrink-0 mt-0.5"
                         loading="lazy"
                       />
 
@@ -121,7 +117,7 @@ export const RepoTableView: React.FC<RepoTableViewProps> = ({
                   <td className="py-3.5 px-3 align-top whitespace-nowrap">
                     <div className="inline-flex items-center gap-1 text-xs font-mono font-semibold text-amber-400 bg-amber-500/10 px-2.5 py-1 rounded-md border border-amber-500/20">
                       <Star size={11} className="fill-amber-400" />
-                      <span>{repo.stars}</span>
+                      <span>{repo.stars === '—' ? 'Unrated' : repo.stars}</span>
                     </div>
                   </td>
 
@@ -148,7 +144,7 @@ export const RepoTableView: React.FC<RepoTableViewProps> = ({
                         ) : null}
                       </div>
                     ) : (
-                      <span className="text-slate-500 text-xs italic">—</span>
+                      <span className="text-slate-500 text-xs italic">None</span>
                     )}
                   </td>
 

@@ -160,13 +160,11 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#08090d] text-slate-200 selection:bg-emerald-500/30 selection:text-emerald-100 flex flex-col font-sans">
+    <div className="min-h-screen bg-background text-slate-200 selection:bg-emerald-500/30 selection:text-emerald-100 flex flex-col font-sans">
       
       {/* Background radial effects */}
       <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden">
-        <div className="absolute top-[-10%] left-[-10%] w-[45%] h-[45%] rounded-full bg-emerald-500/10 blur-[140px]" />
-        <div className="absolute bottom-[-10%] right-[-10%] w-[45%] h-[45%] rounded-full bg-cyan-500/10 blur-[140px]" />
-        <div className="absolute inset-0 bg-[radial-gradient(#ffffff0a_1px,transparent_1px)] [background-size:24px_24px] opacity-40" />
+        <div className="absolute inset-0 dot-grid [background-size:24px_24px] opacity-40" />
       </div>
 
       {/* Navigation */}
@@ -241,11 +239,11 @@ export default function App() {
               </div>
               <h3 className="text-xl font-bold text-white mb-2">No matching repositories</h3>
               <p className="text-sm text-slate-400 mb-6 leading-relaxed">
-                We couldn't find any repositories matching your criteria. Try adjusting your search query or reset the filters.
+                We couldn’t find any repositories matching your criteria. Try adjusting your search query or reset the filters.
               </p>
               <button
                 onClick={handleResetFilters}
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white text-black font-semibold text-sm hover:bg-slate-200 transition-all hover:scale-105"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white text-black font-semibold text-sm hover:bg-slate-200 transition "
               >
                 <RotateCcw size={15} />
                 <span>Reset All Filters</span>

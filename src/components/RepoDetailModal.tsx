@@ -206,14 +206,14 @@ export const RepoDetailModal: React.FC<RepoDetailModalProps> = ({
 
       {/* Modal Dialog (Spacious & Wide: max-w-5xl) */}
       <div 
-        className="relative bg-[#0d0f17] border border-white/10 rounded-3xl max-w-5xl w-full max-h-[92vh] flex flex-col shadow-2xl z-10 overflow-hidden"
+        className="relative bg-surface-300 rounded-3xl max-w-5xl w-full max-h-[92vh] flex flex-col shadow-2xl z-10 overflow-hidden"
         role="dialog"
         aria-modal="true"
       >
         {/* ========================================================= */}
         {/* Sticky Header: ALWAYS visible at top */}
         {/* ========================================================= */}
-        <div className="flex-shrink-0 bg-[#0d0f17]/95 backdrop-blur-md border-b border-white/10 px-5 sm:px-8 py-4 flex items-center justify-between gap-3 z-20">
+        <div className="flex-shrink-0 bg-surface-300/95 backdrop-blur-md border-b border-white/10 px-5 sm:px-8 py-4 flex items-center justify-between gap-3 z-20">
           <div className="flex items-center gap-3 sm:gap-4 min-w-0">
             <img
               src={`https://github.com/${repo.repo.split('/')[0]}.png?size=96`}
@@ -221,11 +221,11 @@ export const RepoDetailModal: React.FC<RepoDetailModalProps> = ({
               onError={(e) => {
                 e.currentTarget.style.display = 'none';
               }}
-              className="w-11 h-11 sm:w-12 sm:h-12 rounded-xl border border-white/10 bg-[#07080c] object-cover flex-shrink-0 shadow-md"
+              className="w-11 h-11 sm:w-12 sm:h-12 rounded-xl border border-white/10 bg-background object-cover flex-shrink-0 shadow-md"
             />
             <div className="min-w-0">
               <div className="flex items-center gap-2 flex-wrap mb-1">
-                <span className={`inline-flex items-center gap-1 px-2.5 py-0.5 rounded-md text-xs font-semibold uppercase tracking-wider border ${catDetails.badgeClass}`}>
+                <span className={`inline-flex items-center gap-1 px-2.5 py-0.5 rounded-md text-xs font-semibold border ${catDetails.badgeClass}`}>
                   {catDetails.icon}
                   <span>{catDetails.label}</span>
                 </span>
@@ -266,7 +266,7 @@ export const RepoDetailModal: React.FC<RepoDetailModalProps> = ({
               href={`https://github.com/${repo.repo}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 py-2 px-3 sm:px-3.5 rounded-xl bg-white/10 hover:bg-white/20 text-white font-semibold text-xs sm:text-sm border border-white/10 transition-all hover:scale-105"
+              className="inline-flex items-center gap-1.5 py-2 px-3 sm:px-3.5 rounded-xl bg-white/10 hover:bg-white/20 text-white font-semibold text-xs sm:text-sm border border-white/10 transition-colors"
               title="Open repository on GitHub"
             >
               <Github size={15} />
@@ -306,7 +306,7 @@ export const RepoDetailModal: React.FC<RepoDetailModalProps> = ({
             {/* Header Close (X) - Always visible! */}
             <button
               onClick={onClose}
-              className="p-2 sm:p-2.5 rounded-xl bg-white/10 hover:bg-white/20 border border-white/15 text-slate-200 hover:text-white transition-all hover:scale-105"
+              className="p-2 sm:p-2.5 rounded-xl bg-white/10 hover:bg-white/20 border border-white/15 text-slate-200 hover:text-white transition-colors"
               title="Close modal (Esc)"
               aria-label="Close modal"
             >
@@ -321,7 +321,7 @@ export const RepoDetailModal: React.FC<RepoDetailModalProps> = ({
         <div className="flex-1 overflow-y-auto px-5 sm:px-8 py-6 space-y-6">
           
           {/* Top Banner Image */}
-          <div className="relative w-full aspect-[21/9] sm:h-64 rounded-2xl overflow-hidden border border-white/10 bg-[#07080c] shadow-lg">
+          <div className="relative w-full aspect-[21/9] sm:h-64 rounded-2xl overflow-hidden border border-white/10 bg-background shadow-lg">
             <img
               src={repo.image || `https://opengraph.githubassets.com/1/${repo.repo}`}
               alt={`${repo.name} preview banner`}
@@ -331,7 +331,7 @@ export const RepoDetailModal: React.FC<RepoDetailModalProps> = ({
               }}
               className="w-full h-full object-cover object-top"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#0d0f17] via-transparent to-transparent opacity-80" />
+            <div className="absolute inset-0 bg-gradient-to-t from-surface-300 via-transparent to-transparent opacity-80" />
             <div className="absolute bottom-3 left-4 right-4 flex items-center justify-between text-xs text-slate-300 font-mono">
               <span className="bg-black/70 backdrop-blur-md px-2.5 py-1 rounded-md border border-white/10">
                 github.com/{repo.repo}
@@ -353,12 +353,12 @@ export const RepoDetailModal: React.FC<RepoDetailModalProps> = ({
           {/* ========================================================= */}
           {/* SECTION 1: Plain-English "What is this?" for Everyone */}
           {/* ========================================================= */}
-          <div className="bg-gradient-to-br from-emerald-950/30 via-[#10131d] to-[#0c0e15] p-5 sm:p-6 rounded-2xl border border-emerald-500/20 space-y-4 shadow-sm">
+          <div className="bg-gradient-to-br from-emerald-950/30 via-surface-200 to-background p-5 sm:p-6 rounded-2xl border border-emerald-500/20 space-y-4 shadow-sm">
             <div className="flex items-center justify-between flex-wrap gap-2">
-              <span className="flex items-center gap-2 text-xs font-bold text-emerald-400 uppercase tracking-wider">
-                <Sparkles size={15} /> In Simple Words: What is {repo.name}?
+              <span className="flex items-center gap-2 text-xs font-bold text-emerald-400">
+                <Sparkles size={15} /> In simple words: what is {repo.name}?
               </span>
-              <span className="text-xs text-slate-400 font-mono bg-white/5 px-2.5 py-0.5 rounded-full border border-white/5">
+              <span className="text-xs text-slate-400 bg-white/5 px-2.5 py-0.5 rounded-full border border-white/5">
                 Easy Guide for Teams & Clients
               </span>
             </div>
@@ -369,7 +369,7 @@ export const RepoDetailModal: React.FC<RepoDetailModalProps> = ({
 
             {/* Target Audience Pills */}
             <div className="pt-2 border-t border-white/5">
-              <span className="block text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-2 flex items-center gap-1.5">
+              <span className="block text-[11px] font-medium text-slate-400 mb-2 flex items-center gap-1.5">
                 <Users size={13} className="text-emerald-400" /> Who is this helpful for?
               </span>
               <div className="flex flex-wrap gap-2">
@@ -393,9 +393,9 @@ export const RepoDetailModal: React.FC<RepoDetailModalProps> = ({
             {/* Replaces Tool */}
             <div className="glass-panel p-5 rounded-2xl border-white/10 flex flex-col justify-between">
               <div>
-                <div className="flex items-center justify-between text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">
+                <div className="flex items-center justify-between text-xs font-medium text-slate-400 mb-2">
                   <span className="flex items-center gap-1.5 text-rose-400">
-                    <Zap size={15} /> Replaces Commercial Software
+                    <Zap size={15} /> Replaces commercial software
                   </span>
                 </div>
                 <p className="text-lg sm:text-xl font-bold text-white mb-2">
@@ -419,8 +419,8 @@ export const RepoDetailModal: React.FC<RepoDetailModalProps> = ({
             {/* Deployment & Client Service Opportunities */}
             <div className="glass-panel p-5 rounded-2xl border-white/10 flex flex-col justify-between">
               <div>
-                <div className="flex items-center gap-1.5 text-xs font-semibold text-sky-400 uppercase tracking-wider mb-2">
-                  <Briefcase size={15} /> Agency & Freelancer Opportunity
+                <div className="flex items-center gap-1.5 text-xs font-medium text-sky-400 mb-2">
+                  <Briefcase size={15} /> Agency & freelancer opportunity
                 </div>
                 <p className="text-base sm:text-lg font-bold text-white mb-2">
                   Service & Implementation Gigs
@@ -430,7 +430,6 @@ export const RepoDetailModal: React.FC<RepoDetailModalProps> = ({
                 </p>
               </div>
               <div className="mt-4 pt-3 border-t border-white/5 flex items-center gap-2 text-xs text-slate-400">
-                <span className="w-2 h-2 rounded-full bg-sky-400" />
                 <span>Great turnkey deliverable for consulting clients</span>
               </div>
             </div>
@@ -441,8 +440,8 @@ export const RepoDetailModal: React.FC<RepoDetailModalProps> = ({
           {/* ========================================================= */}
           <div className="space-y-3">
             <div className="flex items-center justify-between">
-              <h3 className="text-xs uppercase font-bold text-slate-400 tracking-wider flex items-center gap-2">
-                <MapPin size={15} className="text-sky-400" /> Where It's Helpful & Practical Use Cases
+              <h3 className="text-xs font-medium text-slate-400 flex items-center gap-2">
+                <MapPin size={15} className="text-sky-400" /> Where it’s helpful & practical use cases
               </h3>
             </div>
 
@@ -450,7 +449,7 @@ export const RepoDetailModal: React.FC<RepoDetailModalProps> = ({
               {useCases.map((uc, idx) => (
                 <div 
                   key={idx}
-                  className="bg-[#10131d] p-4 rounded-xl border border-white/5 hover:border-sky-500/30 transition-colors flex flex-col justify-between"
+                  className="bg-surface-200 p-4 rounded-xl border border-white/5 hover:border-sky-500/30 transition-colors flex flex-col justify-between"
                 >
                   <div>
                     <div className="w-7 h-7 rounded-lg bg-sky-500/10 border border-sky-500/20 text-sky-400 flex items-center justify-center text-xs font-bold font-mono mb-2.5">
@@ -471,7 +470,7 @@ export const RepoDetailModal: React.FC<RepoDetailModalProps> = ({
           {/* ========================================================= */}
           {/* SECTION 4: How To Use (User Workflow vs Developer Setup) */}
           {/* ========================================================= */}
-          <div className="bg-[#10131f] rounded-2xl border border-white/10 p-5 sm:p-6 space-y-4">
+          <div className="bg-surface-200 rounded-2xl border border-white/10 p-5 sm:p-6 space-y-4">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-white/10">
               <div>
                 <h3 className="text-sm sm:text-base font-bold text-white flex items-center gap-2">
@@ -484,10 +483,10 @@ export const RepoDetailModal: React.FC<RepoDetailModalProps> = ({
               </div>
 
               {/* Tab Selector */}
-              <div className="flex items-center gap-1 bg-[#090b11] p-1 rounded-xl border border-white/10 self-start sm:self-auto">
+              <div className="flex items-center gap-1 bg-background p-1 rounded-xl border border-white/10 self-start sm:self-auto">
                 <button
                   onClick={() => setActiveHowTab('user')}
-                  className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all ${
+                  className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition ${
                     activeHowTab === 'user'
                       ? 'bg-emerald-500 text-slate-950 shadow-sm'
                       : 'text-slate-400 hover:text-white'
@@ -497,7 +496,7 @@ export const RepoDetailModal: React.FC<RepoDetailModalProps> = ({
                 </button>
                 <button
                   onClick={() => setActiveHowTab('dev')}
-                  className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all ${
+                  className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition ${
                     activeHowTab === 'dev'
                       ? 'bg-emerald-500 text-slate-950 shadow-sm'
                       : 'text-slate-400 hover:text-white'
@@ -518,7 +517,7 @@ export const RepoDetailModal: React.FC<RepoDetailModalProps> = ({
                     return (
                       <div 
                         key={idx}
-                        className="bg-[#090b11] p-3.5 rounded-xl border border-white/5 flex items-start gap-3"
+                        className="bg-background p-3.5 rounded-xl border border-white/5 flex items-start gap-3"
                       >
                         <div className="w-6 h-6 rounded-md bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 flex items-center justify-center text-xs font-bold font-mono flex-shrink-0 mt-0.5">
                           {idx + 1}
@@ -551,7 +550,7 @@ export const RepoDetailModal: React.FC<RepoDetailModalProps> = ({
                   {devSteps.map((step, idx) => (
                     <div 
                       key={idx}
-                      className="bg-[#090b11] p-3 rounded-xl border border-white/5 flex items-start gap-3"
+                      className="bg-background p-3 rounded-xl border border-white/5 flex items-start gap-3"
                     >
                       <div className="w-6 h-6 rounded-md bg-blue-500/10 text-blue-400 border border-blue-500/20 flex items-center justify-center text-xs font-bold font-mono flex-shrink-0 mt-0.5">
                         {idx + 1}
@@ -570,13 +569,13 @@ export const RepoDetailModal: React.FC<RepoDetailModalProps> = ({
           {/* SECTION 5: Quick Terminal Commands */}
           {/* ========================================================= */}
           <div className="space-y-3">
-            <h4 className="text-xs uppercase font-semibold text-slate-400 tracking-wider flex items-center gap-1.5">
-              <Terminal size={14} /> Quick Setup & Run Commands
+            <h4 className="text-xs font-medium text-slate-400 flex items-center gap-1.5">
+              <Terminal size={14} /> Quick setup & run commands
             </h4>
 
             {/* Docker Run / Compose */}
-            <div className="bg-[#07080c] rounded-xl p-3 border border-white/5">
-              <div className="flex justify-between items-center mb-1 text-[11px] text-slate-500 font-mono">
+            <div className="bg-background rounded-xl p-3 border border-white/5">
+              <div className="flex justify-between items-center mb-1 text-[11px] text-slate-500">
                 <span>Docker / Compose</span>
                 <button
                   onClick={() => copyText(dockerCmd, 'docker')}
@@ -592,8 +591,8 @@ export const RepoDetailModal: React.FC<RepoDetailModalProps> = ({
             </div>
 
             {/* Git Clone */}
-            <div className="bg-[#07080c] rounded-xl p-3 border border-white/5">
-              <div className="flex justify-between items-center mb-1 text-[11px] text-slate-500 font-mono">
+            <div className="bg-background rounded-xl p-3 border border-white/5">
+              <div className="flex justify-between items-center mb-1 text-[11px] text-slate-500">
                 <span>Git Clone</span>
                 <button
                   onClick={() => copyText(cloneCmd, 'clone')}
@@ -612,12 +611,12 @@ export const RepoDetailModal: React.FC<RepoDetailModalProps> = ({
           {/* Tags */}
           {repo.tags && repo.tags.length > 0 && (
             <div className="pt-2">
-              <span className="block text-[11px] uppercase font-semibold text-slate-500 tracking-wider mb-2">
-                Tags & Categories
+              <span className="block text-[11px] font-medium text-slate-500 mb-2">
+                Tags & categories
               </span>
               <div className="flex flex-wrap gap-1.5">
                 {repo.tags.map(tag => (
-                  <span key={tag} className="text-xs font-mono px-2.5 py-1 rounded-md bg-white/5 text-slate-400 border border-white/5">
+                  <span key={tag} className="text-xs px-2.5 py-1 rounded-md bg-white/5 text-slate-400 border border-white/5">
                     #{tag}
                   </span>
                 ))}
@@ -630,7 +629,7 @@ export const RepoDetailModal: React.FC<RepoDetailModalProps> = ({
         {/* ========================================================= */}
         {/* Sticky Footer: ALWAYS visible at bottom */}
         {/* ========================================================= */}
-        <div className="flex-shrink-0 bg-[#0b0d14]/95 backdrop-blur-md border-t border-white/10 px-5 sm:px-8 py-3.5 sm:py-4 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 z-20">
+        <div className="flex-shrink-0 bg-background/95 backdrop-blur-md border-t border-white/10 px-5 sm:px-8 py-3.5 sm:py-4 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 z-20">
           
           {/* Left: Close Button & Share */}
           <div className="flex items-center gap-2">
@@ -672,7 +671,7 @@ export const RepoDetailModal: React.FC<RepoDetailModalProps> = ({
               href={`https://github.com/${repo.repo}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex-1 sm:flex-initial flex items-center justify-center gap-2 py-2.5 px-5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-sm shadow-lg shadow-emerald-500/20 hover:scale-[1.02] active:scale-[0.98] transition-all"
+              className="flex-1 sm:flex-initial flex items-center justify-center gap-2 py-2.5 px-5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-sm shadow-lg shadow-emerald-500/20 transition"
             >
               <Github size={17} />
               <span>Open on GitHub</span>
